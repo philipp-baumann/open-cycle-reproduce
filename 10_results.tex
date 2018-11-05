@@ -1,0 +1,16 @@
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# From https://stackoverflow.com/questions/31744576/combine-rmarkdown-generated-latex-documents-in-rstudio-without-having-to-manuall}
+\NormalTok{create_latex <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(f)\{}
+\NormalTok{  knitr}\OperatorTok{::}\KeywordTok{knit}\NormalTok{(f, }\StringTok{'tmp-outputfile.md'}\NormalTok{);}
+\NormalTok{  newname <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(tools}\OperatorTok{::}\KeywordTok{file_path_sans_ext}\NormalTok{(f), }\StringTok{".tex"}\NormalTok{)}
+\NormalTok{  mess <-}\StringTok{ }\KeywordTok{paste}\NormalTok{(}\StringTok{'pandoc -f markdown -t latex -p -o'}\NormalTok{, }
+    \KeywordTok{shQuote}\NormalTok{(newname),}\StringTok{"tmp-outputfile.md"}\NormalTok{)}
+  \KeywordTok{system}\NormalTok{(mess)\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{part-1}{%
+\subsection{Part 1}\label{part-1}}
+
+Figure xxx shows

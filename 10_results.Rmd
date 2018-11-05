@@ -1,0 +1,26 @@
+---
+title: "Part 1"
+output: 
+  pdf_document:
+    keep_tex: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# From https://stackoverflow.com/questions/31744576/combine-rmarkdown-generated-latex-documents-in-rstudio-without-having-to-manuall
+create_latex <- function(f){
+  knitr::knit(f, 'tmp-outputfile.md');
+  newname <- paste0(tools::file_path_sans_ext(f), ".tex")
+  mess <- paste('pandoc -f markdown -t latex -p -o', 
+    shQuote(newname),"tmp-outputfile.md")
+  system(mess)}
+```
+
+
+## Part 1
+
+Figure xxx shows
+
